@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Conforama – Flyer satisfaction</title>
+<style>
+  :root{
+    --rouge:#E2001A;        /* rouge Conforama */
+    --rouge-fonce:#C00016;
+    --jaune:#F2B705;        /* neutre */
+    --vert:#5CB85C;         /* recommandation */
+    --gris-encart:#ECECEC;
+    --gris-bord:#D9D9D9;
+    --texte:#1A1A1A;
+    --gris-texte:#7A7A7A;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  @page{ size:A4 portrait; margin:0; }
+
+  html,body{ background:#9a9a9a; }
+
+  body{
+    font-family:"Poppins","Liberation Sans",sans-serif;
+    color:var(--texte);
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+
+  /* ---- feuille A4 ---- */
+  .page{
+    position:relative;
+    width:210mm;
+    height:297mm;
+    margin:0 auto;
+    background:#fff;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* ---- bandeau rouge ---- */
+  .header{
+    background:var(--rouge);
+    color:#fff;
+    text-align:center;
+    padding:16mm 12mm 14mm;
+  }
+  .header h1{
+    font-weight:800;
+    font-size:30pt;
+    line-height:1.12;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+  }
+
+  /* ---- corps ---- */
+  .body{
+    flex:1;
+    padding:11mm 16mm 0;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .intro{ font-size:13.5pt; line-height:1.55; }
+  .intro .salut{ margin-bottom:5mm; }
+  .intro p{ margin:0; }
+
+  /* ---- rangée des smileys ---- */
+  .scores{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:14mm;
+    margin:10mm 0 2mm;
+  }
+  .score{ text-align:center; }
+  .score svg{ display:block; margin:0 auto; }
+  .score .num{
+    font-weight:800;
+    font-size:24pt;
+    margin-top:3mm;
+    color:var(--texte);
+  }
+  .score .lab{
+    font-weight:700;
+    font-size:10.5pt;
+    letter-spacing:.4px;
+    margin-top:1mm;
+  }
+
+  /* ---- bulle explicative ---- */
+  .bubble-wrap{ display:flex; justify-content:flex-end; padding-right:4mm; }
+  .bubble{
+    position:relative;
+    max-width:78mm;
+    border:1.6px solid #BBB;
+    border-radius:9px;
+    background:#fff;
+    padding:5mm 6mm;
+    font-size:10.5pt;
+    line-height:1.4;
+    color:#2b2b2b;
+  }
+  .bubble::after,.bubble::before{
+    content:"";
+    position:absolute;
+    top:-13px; left:34%;
+    border:7px solid transparent;
+  }
+  .bubble::before{ border-bottom-color:#BBB; top:-15px; }
+  .bubble::after{ border-bottom-color:#fff; }
+
+  /* ---- encart boîte mail ---- */
+  .insert{
+    margin-top:auto;
+    margin-bottom:8mm;
+    background:var(--gris-encart);
+    border-radius:10px;
+    padding:7mm 8mm;
+  }
+  .insert-top{ display:flex; align-items:center; gap:7mm; }
+  .insert-top .icon{ flex:0 0 auto; }
+  .insert-top .txt h2{
+    font-weight:800;
+    font-size:16pt;
+    margin-bottom:2mm;
+  }
+  .insert-top .txt p{
+    font-size:12pt;
+    line-height:1.45;
+    color:#333;
+  }
+  .insert .merci{
+    text-align:center;
+    font-weight:700;
+    font-size:13pt;
+    margin-top:6mm;
+  }
+
+  /* ---- pied ---- */
+  .footer{
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    position:relative;
+    padding:0 16mm 9mm;
+  }
+  .logo{
+    font-weight:800;
+    font-size:26pt;
+    color:var(--rouge);
+    letter-spacing:.3px;
+  }
+  .logo .o-dot{ color:var(--rouge); }
+  .ref{
+    position:absolute;
+    right:16mm; bottom:9mm;
+    font-size:7.5pt;
+    color:var(--gris-texte);
+  }
+  .ref-side{
+    position:absolute;
+    right:3mm; bottom:70mm;
+    transform:rotate(-90deg);
+    transform-origin:right bottom;
+    font-size:6.5pt;
+    color:#B5B5B5;
+    white-space:nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- BANDEAU -->
+    <header class="header">
+      <h1>Notre meilleur guide,<br>c'est vous&nbsp;!</h1>
+    </header>
+
+    <!-- CORPS -->
+    <div class="body">
+
+      <div class="intro">
+        <div class="salut">Madame, Monsieur,</div>
+        <p>Merci de nous avoir choisis pour vos achats&nbsp;!</p>
+        <p>Votre expérience nous tient à cœur.</p>
+        <p>C'est grâce à vos retours que nous pouvons<br>continuer à nous améliorer.</p>
+      </div>
+
+      <!-- SMILEYS (taille croissante) -->
+      <div class="scores">
+
+        <!-- INSATISFACTION -->
+        <div class="score">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="44" fill="none" stroke="var(--rouge)" stroke-width="5"/>
+            <circle cx="35" cy="42" r="4.5" fill="var(--rouge)"/>
+            <circle cx="65" cy="42" r="4.5" fill="var(--rouge)"/>
+            <path d="M33 70 Q50 56 67 70" fill="none" stroke="var(--rouge)" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <div class="num">0-6</div>
+          <div class="lab" style="color:var(--rouge)">INSATISFACTION</div>
+        </div>
+
+        <!-- NEUTRE -->
+        <div class="score">
+          <svg width="120" height="120" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="44" fill="none" stroke="var(--jaune)" stroke-width="5"/>
+            <circle cx="35" cy="42" r="4.5" fill="var(--jaune)"/>
+            <circle cx="65" cy="42" r="4.5" fill="var(--jaune)"/>
+            <line x1="33" y1="66" x2="67" y2="66" stroke="var(--jaune)" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <div class="num">7-8</div>
+          <div class="lab" style="color:#C99500">NEUTRE</div>
+        </div>
+
+        <!-- RECOMMANDATION -->
+        <div class="score">
+          <svg width="148" height="148" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="44" fill="none" stroke="var(--vert)" stroke-width="5"/>
+            <circle cx="35" cy="42" r="4.5" fill="var(--vert)"/>
+            <circle cx="65" cy="42" r="4.5" fill="var(--vert)"/>
+            <path d="M31 60 Q50 78 69 60" fill="none" stroke="var(--vert)" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+          <div class="num">9-10</div>
+          <div class="lab" style="color:#3E9E3E">RECOMMANDATION</div>
+        </div>
+
+      </div>
+
+      <!-- BULLE -->
+      <div class="bubble-wrap">
+        <div class="bubble">
+          Une note de 9 ou 10 signifie que vous nous recommanderiez à vos proches. C'est notre objectif&nbsp;!
+        </div>
+      </div>
+
+      <!-- ENCART -->
+      <div class="insert">
+        <div class="insert-top">
+          <div class="icon">
+            <svg width="110" height="84" viewBox="0 0 110 84">
+              <!-- carte qui dépasse -->
+              <rect x="22" y="6" width="56" height="40" rx="3" fill="#fff" stroke="#9aa0a6" stroke-width="2.5"/>
+              <text x="50" y="31" text-anchor="middle" font-family="Poppins,sans-serif" font-size="11" font-weight="800" fill="var(--rouge)">Conforama</text>
+              <!-- enveloppe -->
+              <path d="M14 30 h82 a4 4 0 0 1 4 4 v40 a4 4 0 0 1 -4 4 H14 a4 4 0 0 1 -4 -4 V34 a4 4 0 0 1 4 -4 Z" fill="#f4f4f4" stroke="#7f868c" stroke-width="2.5"/>
+              <path d="M11 33 L55 60 L99 33" fill="none" stroke="#7f868c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- chronomètre -->
+              <circle cx="86" cy="64" r="17" fill="#fff" stroke="#7f868c" stroke-width="2.5"/>
+              <line x1="86" y1="44" x2="86" y2="49" stroke="#7f868c" stroke-width="3" stroke-linecap="round"/>
+              <line x1="80" y1="45" x2="92" y2="45" stroke="#7f868c" stroke-width="3" stroke-linecap="round"/>
+              <line x1="86" y1="64" x2="86" y2="54" stroke="var(--rouge)" stroke-width="2.6" stroke-linecap="round"/>
+              <line x1="86" y1="64" x2="94" y2="66" stroke="var(--rouge)" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="86" cy="64" r="2.4" fill="#7f868c"/>
+            </svg>
+          </div>
+          <div class="txt">
+            <h2>Surveillez votre boîte mail&nbsp;!</h2>
+            <p>Un court questionnaire de satisfaction<br>vous sera envoyé prochainement.</p>
+          </div>
+        </div>
+        <div class="merci">Merci de prendre une minute pour nous aider.</div>
+      </div>
+
+    </div>
+
+    <!-- PIED -->
+    <div class="footer">
+      <div class="logo">Conforama</div>
+      <div class="ref">L'Imprimerie – Réf. 2024</div>
+    </div>
+    <div class="ref-side">L'Imprimerie – Réf. 2024</div>
+
+  </div>
+</body>
+</html>
